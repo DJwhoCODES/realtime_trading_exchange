@@ -16,7 +16,7 @@ type Level struct {
 	length      int
 }
 
-func (l *Level) Add(o *types.Order) {
+func (l *Level) Add(o *types.Order) *node {
 	n := &node{
 		order: o,
 		prev:  nil,
@@ -34,6 +34,8 @@ func (l *Level) Add(o *types.Order) {
 
 	l.TotalVolume += o.Size
 	l.length++
+
+	return n
 }
 
 func (l *Level) Remove(n *node) {
